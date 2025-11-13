@@ -1,5 +1,5 @@
 {
-  "buildCommand": "cd .. && npm install && turbo run build --filter=@tangerine/shared...@tangerine/frontend",
+  "buildCommand": "cd .. && npm install && turbo run build --filter=@tangerine/shared && turbo run build --filter=@tangerine/frontend",
   "outputDirectory": ".next",
   "installCommand": "cd .. && npm install",
   "framework": "nextjs"
