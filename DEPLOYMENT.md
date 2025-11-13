@@ -126,7 +126,7 @@ This guide covers deploying Tangerine Furniture to production using various meth
    SMTP_PASS=your-app-password
    
    # CORS
-   FRONTEND_URL=https://your-frontend.vercel.app
+  FRONTEND_URL=https://furniture-ecommerce-frontend-chi.vercel.app
    ADMIN_URL=https://your-admin-url.com
    ```
 

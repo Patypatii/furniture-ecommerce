@@ -84,7 +84,7 @@ STRIPE_SECRET_KEY=sk_live_...
 STRIPE_PUBLISHABLE_KEY=pk_live_...
 
 # CORS - Add your Vercel URLs
-FRONTEND_URL=https://your-frontend.vercel.app
+FRONTEND_URL=https://furniture-ecommerce-frontend-chi.vercel.app
 ADMIN_URL=https://your-admin.vercel.app
 ```
 
@@ -154,7 +154,7 @@ cd .. && npm install && turbo run build --filter=@tangerine/shared... --filter=@
 ### CORS Errors
 **Solution:** Add your Vercel URLs to environment variables:
 ```bash
-FRONTEND_URL=https://your-frontend.vercel.app
+FRONTEND_URL=https://furniture-ecommerce-frontend-chi.vercel.app
 ADMIN_URL=https://your-admin.vercel.app
 ```
 

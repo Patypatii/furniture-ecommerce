@@ -71,7 +71,7 @@ PORT = 10000
 MONGODB_URI = your-mongodb-connection-string
 JWT_SECRET = your-secret-min-32-chars
 JWT_EXPIRE = 7d
-FRONTEND_URL = https://your-frontend.vercel.app
+    FRONTEND_URL = https://furniture-ecommerce-frontend-chi.vercel.app
 ADMIN_URL = https://your-admin.vercel.app
 ```
 

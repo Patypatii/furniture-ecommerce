@@ -15,7 +15,7 @@ interface ChatContext {
 
 // VERIFIED BUSINESS INFORMATION - Only facts from original site
 const VERIFIED_BUSINESS_INFO = {
-  name: "Tangerine Furniture",
+  name: "MyFurniture",
   description: "furniture shop in Nairobi, Mombasa, Kenya. We make timeless sofas, dining sets, coffee tables, beds, accent chairs and tv stands",
   locations: [
     {
@@ -33,15 +33,15 @@ const VERIFIED_BUSINESS_INFO = {
   ],
   delivery: {
     verified: "Same day deliveries within Nairobi for ready made orders",
-    note: "Contact +254791708894 for delivery to other regions"
+    note: "Contact 0758841701 for delivery to other regions"
   },
   contact: {
-    whatsapp: "+254791708894"
+    whatsapp: "0758841701"
   }
 };
 
 // STRICT SYSTEM PROMPT - Anti-hallucination rules
-const STRICT_SYSTEM_PROMPT = `You are the official AI assistant for Tangerine Furniture in Nairobi, Kenya.
+const STRICT_SYSTEM_PROMPT = `You are the official AI assistant for MyFurniture in Nairobi, Kenya.
 
 CONTEXT AWARENESS:
 - You know which page the user is currently viewing
@@ -73,7 +73,7 @@ CRITICAL RULES - FOLLOW STRICTLY:
 
 5. DELIVERY
    - VERIFIED: "Same day deliveries within Nairobi for ready made orders"
-   - For other regions: "For delivery outside Nairobi, please WhatsApp +254791708894"
+   - For other regions: "For delivery outside Nairobi, please WhatsApp 0758841701"
    - Free shipping on orders over KES 10,000
 
 6. PAYMENT METHODS
@@ -220,7 +220,7 @@ class ChatbotService {
         message: {
           id: this.generateMessageId(),
           role: 'assistant',
-          content: 'I apologize, but I\'m having trouble right now. Please WhatsApp us at +254791708894 for immediate assistance.',
+          content: 'I apologize, but I\'m having trouble right now. Please WhatsApp us at 0758841701 for immediate assistance.',
           timestamp: new Date(),
         },
         showWhatsAppButton: true,

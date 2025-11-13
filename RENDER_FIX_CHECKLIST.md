@@ -83,7 +83,7 @@ JWT_EXPIRE=7d
 
 #### For CORS (Add your Vercel URLs):
 ```bash
-FRONTEND_URL=https://your-frontend.vercel.app
+FRONTEND_URL=https://furniture-ecommerce-frontend-chi.vercel.app
 ADMIN_URL=https://your-admin.vercel.app
 ```
 

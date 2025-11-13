@@ -122,7 +122,7 @@ Both projects will auto-deploy on push to `main` branch.
    origin: [
      process.env.FRONTEND_URL || 'http://localhost:3000',
      process.env.ADMIN_URL || 'http://localhost:5173',
-     'https://your-frontend.vercel.app', // Add your frontend Vercel URL
+    'https://furniture-ecommerce-frontend-chi.vercel.app', // Live frontend (production)
      'https://your-admin.vercel.app', // Add your admin Vercel URL
    ]
    ```

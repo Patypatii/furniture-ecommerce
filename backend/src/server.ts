@@ -13,6 +13,11 @@ dotenv.config();
 // Initialize Express app
 const app: Application = express();
 const PORT = process.env.PORT || 5000;
+const publicBaseUrl =
+  process.env.SERVER_PUBLIC_URL ||
+  process.env.RENDER_EXTERNAL_URL ||
+  process.env.API_URL ||
+  `http://localhost:${PORT}`;
 
 // Security middleware
 app.use(helmet());
@@ -21,6 +26,7 @@ app.use(helmet());
 const allowedOrigins = [
   process.env.FRONTEND_URL,
   process.env.ADMIN_URL,
+  'https://furniture-ecommerce-frontend-chi.vercel.app',
   // Development origins
   'http://localhost:3000', // Frontend (Next.js)
   'http://localhost:3001',
@@ -142,8 +148,8 @@ const startServer = async () => {
     const server = app.listen(PORT, () => {
       logger.info(`🚀 Server running on port ${PORT}`);
       logger.info(`📍 Environment: ${process.env.NODE_ENV || 'development'}`);
-      logger.info(`🔗 API: http://localhost:${PORT}/api/v1`);
-      logger.info(`🏥 Health: http://localhost:${PORT}/health`);
+      logger.info(`🔗 API: ${publicBaseUrl}/api/v1`);
+      logger.info(`🏥 Health: ${publicBaseUrl}/health`);
       logger.info(`✅ Server started successfully`);
     });
 

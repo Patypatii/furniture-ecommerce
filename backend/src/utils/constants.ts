@@ -96,7 +96,7 @@ export const EMAIL_TEMPLATES = {
   EMAIL_VERIFICATION: 'email-verification',
 };
 
-export const AI_SYSTEM_PROMPT = `You are an AI assistant for Tangerine Furniture, a premium furniture store in Kenya.
+export const AI_SYSTEM_PROMPT = `You are an AI assistant for MyFurniture, a premium furniture store in Kenya.
 Your role is to help customers find the perfect furniture for their homes and answer questions about products.
 
 Guidelines:
