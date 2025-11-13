@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { IAddress, PaymentMethod, ICart } from '@tangerine/shared';
+import { IAddress, PaymentMethod, ICart, ICreateOrderData, ICartItem } from '@tangerine/shared';
 import AddressManager from '@/components/account/AddressManager';
 import { toast } from '@/lib/toast';
 import { cartService } from '@/lib/api/cart.service';
@@ -188,12 +188,19 @@ export default function CheckoutForm() {
             console.log('🛒 Placing order with cart:', cart);
 
             // Prepare order data with items (backend will sync to DB if needed)
-            const orderData = {
-                items: cart.items.map(item => ({
-                    product: item.product,
-                    quantity: item.quantity,
-                    price: item.price,
-                })),
+            const items: ICartItem[] = cart.items.map((item) => ({
+                product: item.product,
+                name: item.name,
+                slug: item.slug || item.product,
+                image: item.image || '/placeholder.jpg',
+                price: item.price,
+                quantity: item.quantity,
+                subtotal: item.subtotal ?? item.price * item.quantity,
+                variant: item.variant,
+            }));
+
+            const orderData: ICreateOrderData = {
+                items,
                 shipping: selectedAddress,
                 billing: selectedAddress, // Same as shipping for now
                 paymentMethod: paymentMethod,

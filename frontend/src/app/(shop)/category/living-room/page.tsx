@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { Suspense } from 'react';
 import ProductsGrid from '@/components/products/ProductsGrid';
 
 export const metadata: Metadata = {
@@ -84,7 +85,9 @@ export default function LivingRoomPage() {
                 {/* All Products Section */}
                 <div>
                     <h2 className="text-3xl font-bold mb-8 text-gray-900">All Living Room Products</h2>
-                    <ProductsGrid />
+                    <Suspense fallback={<div className="text-gray-500">Loading products...</div>}>
+                        <ProductsGrid />
+                    </Suspense>
                 </div>
             </div>
         </div>

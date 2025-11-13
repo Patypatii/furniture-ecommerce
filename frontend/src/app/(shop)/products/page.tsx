@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Suspense } from 'react';
 import ProductsGrid from '@/components/products/ProductsGrid';
 import ProductFilters from '@/components/products/ProductFilters';
 
@@ -23,12 +24,16 @@ export default function ProductsPage() {
                 <div className="flex flex-col lg:flex-row gap-8">
                     {/* Filters Sidebar */}
                     <aside className="lg:w-64 flex-shrink-0">
-                        <ProductFilters />
+                        <Suspense fallback={<div className="text-gray-500">Loading filters...</div>}>
+                            <ProductFilters />
+                        </Suspense>
                     </aside>
 
                     {/* Products Grid */}
                     <div className="flex-1">
-                        <ProductsGrid />
+                        <Suspense fallback={<div className="text-gray-500">Loading products...</div>}>
+                            <ProductsGrid />
+                        </Suspense>
                     </div>
                 </div>
             </div>

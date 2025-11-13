@@ -69,7 +69,7 @@ export default function ProductDetails({ slug }: ProductDetailsProps) {
 
                 // If logged in, sync to backend
                 if (token) {
-                    await cartService.updateCartItem(product._id, {
+                    await cartService.updateCartItem({
                         productId: product._id,
                         quantity: cart.items[existingItemIndex].quantity,
                     });
@@ -132,7 +132,7 @@ export default function ProductDetails({ slug }: ProductDetailsProps) {
 
                 // If logged in, sync to backend
                 if (token) {
-                    await cartService.updateCartItem(product._id, {
+                    await cartService.updateCartItem({
                         productId: product._id,
                         quantity: cart.items[existingItemIndex].quantity,
                     });
@@ -215,7 +215,11 @@ export default function ProductDetails({ slug }: ProductDetailsProps) {
                     {/* Main Image / 3D Viewer */}
                     <div className="aspect-square mb-4 rounded-lg overflow-hidden bg-gray-100">
                         {showARViewer && product.model3D ? (
-                            <Product3DViewer modelUrl={product.model3D.glbUrl} />
+                            <Product3DViewer
+                                glbUrl={product.model3D.glbUrl}
+                                usdzUrl={product.model3D.usdzUrl}
+                                alt={`${product.name} 3D model`}
+                            />
                         ) : (
                             <motion.div
                                 key={selectedImage}

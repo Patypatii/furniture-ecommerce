@@ -46,7 +46,7 @@ export default function AddressManager({ onSelectAddress, selectionMode = false 
             // Set default address as selected
             const defaultAddr = user.addresses?.find((a: IAddress) => a.isDefault);
             if (defaultAddr) {
-                setSelectedAddressId(defaultAddr._id);
+                setSelectedAddressId(defaultAddr._id ?? null);
             }
         } catch (error) {
             console.error('Failed to load addresses:', error);
@@ -113,7 +113,7 @@ export default function AddressManager({ onSelectAddress, selectionMode = false 
 
     const handleEdit = (address: IAddress) => {
         setFormData(address);
-        setEditingId(address._id);
+        setEditingId(address._id ?? null);
         setIsAdding(true);
     };
 
@@ -129,6 +129,10 @@ export default function AddressManager({ onSelectAddress, selectionMode = false 
         if (!confirmed) return;
 
         try {
+            if (!address._id) {
+                toast.error('Address ID is missing. Please refresh and try again.');
+                return;
+            }
             // Delete via API
             const response = await userService.deleteAddress(address._id);
             setAddresses(response.data);
@@ -140,7 +144,7 @@ export default function AddressManager({ onSelectAddress, selectionMode = false 
     };
 
     const handleSelectAddress = (address: IAddress) => {
-        setSelectedAddressId(address._id);
+        setSelectedAddressId(address._id ?? null);
         if (onSelectAddress) {
             onSelectAddress(address);
         }

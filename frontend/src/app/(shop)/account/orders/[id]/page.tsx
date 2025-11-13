@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { orderService } from '@/lib/api/order.service';
-import { IOrder } from '@tangerine/shared';
+import { IOrder, PaymentStatus } from '@tangerine/shared';
 import { toast } from '@/lib/toast';
 import { ArrowLeft, Package, Truck, CheckCircle, XCircle, Clock } from 'lucide-react';
 
@@ -51,6 +51,23 @@ export default function OrderDetailPage() {
                 return <Clock className="w-5 h-5 text-gray-600" />;
         }
     };
+
+    const getPaymentStatusColor = (status: PaymentStatus) => {
+        switch (status) {
+            case 'completed':
+                return 'text-green-600';
+            case 'failed':
+            case 'refunded':
+                return 'text-red-600';
+            case 'processing':
+                return 'text-blue-600';
+            default:
+                return 'text-yellow-600';
+        }
+    };
+
+    const formatStatus = (status: string) =>
+        status.replace(/_/g, ' ').replace(/^\w/, (char) => char.toUpperCase());
 
     const getStatusColor = (status: string) => {
         switch (status) {
@@ -219,13 +236,8 @@ export default function OrderDetailPage() {
                     <p className="text-gray-700 capitalize">{order.paymentMethod}</p>
                     <p className="text-sm text-gray-600 mt-2">
                         Payment Status:{' '}
-                        <span
-                            className={`font-medium ${order.paymentStatus === 'paid'
-                                    ? 'text-green-600'
-                                    : 'text-yellow-600'
-                                }`}
-                        >
-                            {order.paymentStatus.charAt(0).toUpperCase() + order.paymentStatus.slice(1)}
+                        <span className={`font-medium ${getPaymentStatusColor(order.paymentStatus)}`}>
+                            {formatStatus(order.paymentStatus)}
                         </span>
                     </p>
                 </div>

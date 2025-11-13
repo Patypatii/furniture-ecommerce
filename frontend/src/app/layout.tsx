@@ -15,7 +15,10 @@ const robotoSlab = Roboto_Slab({
   variable: '--font-roboto-slab',
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://tangerinefurniture.co.ke';
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: 'Tangerine Furniture | Premium Furniture Store in Kenya',
     template: '%s | Tangerine Furniture',

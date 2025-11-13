@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Suspense } from 'react';
 import ProductsGrid from '@/components/products/ProductsGrid';
 
 export const metadata: Metadata = {
@@ -16,7 +17,9 @@ export default function ShopPage() {
                         Explore our complete collection of quality furniture for your home and business
                     </p>
                 </div>
-                <ProductsGrid />
+                <Suspense fallback={<div className="text-gray-500">Loading products...</div>}>
+                    <ProductsGrid />
+                </Suspense>
             </div>
         </div>
     );
