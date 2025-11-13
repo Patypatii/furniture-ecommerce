@@ -1,0 +1,39 @@
+{
+  "name": "tangerine-furniture-v2",
+  "version": "2.0.0",
+  "private": true,
+  "packageManager": "npm@10.0.0",
+  "description": "Modern furniture e-commerce platform with AI capabilities",
+  "workspaces": [
+    "frontend",
+    "backend",
+    "admin",
+    "shared"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "start": "turbo run start",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "docker:up": "docker-compose -f infrastructure/docker/docker-compose.yml up -d",
+    "docker:down": "docker-compose -f infrastructure/docker/docker-compose.yml down",
+    "docker:build": "docker-compose -f infrastructure/docker/docker-compose.yml build"
+  },
+  "devDependencies": {
+    "turbo": "^2.0.14",
+    "typescript": "^5.3.3",
+    "@types/node": "^20.11.5",
+    "prettier": "^3.2.4",
+    "eslint": "^8.56.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "author": "Tangerine Furniture Team",
+  "license": "MIT"
+}
