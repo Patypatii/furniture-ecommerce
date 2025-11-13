@@ -1,0 +1,9 @@
+backend/
+infrastructure/
+*.md
+!README.md
+.env*
+!.env.example
+node_modules/
+.DS_Store
+

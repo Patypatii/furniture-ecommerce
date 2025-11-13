@@ -16,13 +16,33 @@ const PORT = process.env.PORT || 5000;
 
 // Security middleware
 app.use(helmet());
+
+// CORS configuration - supports multiple origins from environment
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  process.env.ADMIN_URL,
+  // Development origins
+  'http://localhost:3000', // Frontend (Next.js)
+  'http://localhost:3001',
+  'http://localhost:5173', // Admin Dashboard (Vite)
+].filter(Boolean); // Remove undefined values
+
 app.use(cors({
-  origin: [
-    process.env.FRONTEND_URL || 'http://localhost:3000',
-    'http://localhost:3000', // Frontend (Next.js)
-    'http://localhost:3001',
-    'http://localhost:5173', // Admin Dashboard (Vite)
-  ],
+  origin: (origin, callback) => {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      // In production, be strict; in development, allow all
+      if (process.env.NODE_ENV === 'production') {
+        callback(new Error('Not allowed by CORS'));
+      } else {
+        callback(null, true);
+      }
+    }
+  },
   credentials: true,
 }));
 
