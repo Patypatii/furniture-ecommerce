@@ -3,6 +3,9 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
 
+  // Transpile shared package
+  transpilePackages: ['@tangerine/shared'],
+
   // Image optimization
   images: {
     domains: ['res.cloudinary.com', 'tangerinefurniture.co.ke', 'ik.imagekit.io', 'via.placeholder.com'],
