@@ -58,6 +58,20 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(morgan('dev'));
 }
 
+// Root endpoint - redirect to API info
+app.get('/', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Tangerine Furniture API',
+    version: '1.0.0',
+    endpoints: {
+      api: '/api/v1',
+      health: '/health',
+    },
+    documentation: 'https://github.com/Patypatii/furniture-ecommerce',
+  });
+});
+
 // Health check endpoint
 app.get('/health', (req, res) => {
   const dbConnected = isDatabaseConnected();
@@ -65,7 +79,7 @@ app.get('/health', (req, res) => {
     success: true,
     message: 'Server is running',
     timestamp: new Date().toISOString(),
-    environment: process.env.NODE_ENV,
+    environment: process.env.NODE_ENV || 'development',
     database: {
       connected: dbConnected,
       status: dbConnected ? 'healthy' : 'unavailable',

@@ -89,13 +89,11 @@ const orderSchema = new Schema<IOrderDocument>(
             type: String,
             required: false, // Auto-generated in pre-save hook
             unique: true,
-            index: true,
         },
         user: {
             type: Schema.Types.ObjectId as any,
             ref: 'User',
             required: true,
-            index: true,
         },
         items: [orderItemSchema],
         billing: {

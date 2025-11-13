@@ -16,7 +16,6 @@ const categorySchema = new Schema<ICategoryDocument>(
             required: true,
             unique: true,
             lowercase: true,
-            index: true,
         },
         description: {
             type: String,
@@ -37,7 +36,6 @@ const categorySchema = new Schema<ICategoryDocument>(
         isActive: {
             type: Boolean,
             default: true,
-            index: true,
         },
     },
     {
