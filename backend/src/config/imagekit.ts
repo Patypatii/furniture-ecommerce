@@ -110,7 +110,7 @@ export const getOptimizedImageUrl = (
 /**
  * Get image details
  */
-export const getImageDetails = async (fileId: string) => {
+export const getImageDetails = async (fileId: string): Promise<any> => {
     try {
         return await imagekit.getFileDetails(fileId);
     } catch (error) {

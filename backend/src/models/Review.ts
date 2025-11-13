@@ -20,13 +20,13 @@ export interface IReviewDocument extends Omit<IReview, '_id'>, Document {}
 const reviewSchema = new Schema<IReviewDocument>(
   {
     product: {
-      type: Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId as any,
       ref: 'Product',
       required: true,
       index: true,
     },
     user: {
-      type: Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId as any,
       ref: 'User',
       required: true,
       index: true,
